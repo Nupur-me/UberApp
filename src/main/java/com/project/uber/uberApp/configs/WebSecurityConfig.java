@@ -14,11 +14,19 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @Configuration
 @EnableWebSecurity
 @RequiredArgsConstructor
-//@EnableMethodSecurity(securedEnabled = true)
+@EnableMethodSecurity(securedEnabled = true)
 public class WebSecurityConfig {
 
     private final JWTAuthFilter jwtAuthFilter;
     private final String[] PUBLIC_ROUTES = {"/auth/**"};
+
+    // Add an array for Swagger-related endpoints
+    private final String[] SWAGGER_ROUTES = {
+            "/swagger-ui/**",
+            "/v3/api-docs/**",
+            "/swagger-resources/**",
+            "/webjars/**"
+    };
 
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
@@ -28,13 +36,13 @@ public class WebSecurityConfig {
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .csrf(csrfConfig -> csrfConfig.disable())
                 .authorizeHttpRequests(auth -> auth
+                        // Permit all for public routes and Swagger routes
                         .requestMatchers(PUBLIC_ROUTES).permitAll()
+                        .requestMatchers(SWAGGER_ROUTES).permitAll()
                         .anyRequest().authenticated()
                 )
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
 
-
         return httpSecurity.build();
     }
-
 }
