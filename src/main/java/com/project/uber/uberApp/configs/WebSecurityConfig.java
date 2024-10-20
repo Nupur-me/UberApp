@@ -1,3 +1,5 @@
+package com.project.uber.uberApp.configs;
+
 import com.project.uber.uberApp.security.JWTAuthFilter;
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Info;
@@ -36,6 +38,7 @@ public class WebSecurityConfig {
                 .sessionManagement(sessionConfig -> sessionConfig
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .csrf(csrfConfig -> csrfConfig.disable())
+                .formLogin(formLogin -> formLogin.disable())
                 .authorizeHttpRequests(auth -> auth
                         // Permit all for public routes and Swagger routes
                         .requestMatchers(PUBLIC_ROUTES).permitAll()
