@@ -1,6 +1,7 @@
-package com.project.uber.uberApp.configs;
-
 import com.project.uber.uberApp.security.JWTAuthFilter;
+import io.swagger.v3.oas.models.OpenAPI;
+import io.swagger.v3.oas.models.info.Info;
+import io.swagger.v3.oas.models.servers.Server;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -44,5 +45,13 @@ public class WebSecurityConfig {
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
 
         return httpSecurity.build();
+    }
+
+    // Add Swagger configuration for production server URL
+    @Bean
+    public OpenAPI customOpenAPI() {
+        return new OpenAPI()
+                .info(new Info().title("Uber App API").version("v1"))
+                .addServersItem(new Server().url("https://uberapp-production.up.railway.app"));
     }
 }
