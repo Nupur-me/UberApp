@@ -1,6 +1,6 @@
 # Uber Like Backend - Ride Booking App(Spring Boot)
 
-#### FThe Uber-like backend is a powerful ride booking platform built with Spring Boot, designed to connect riders with drivers efficiently.
+#### The Uber-like backend is a powerful ride booking platform built with Spring Boot, designed to connect riders with drivers efficiently.
 
 ## Live Demo | API Documentation(Swagger)
 https://uberapp-production.up.railway.app/swagger-ui/index.html
