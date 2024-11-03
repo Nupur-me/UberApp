@@ -10,6 +10,7 @@ https://uberapp-production.up.railway.app/swagger-ui/index.html
 + **Ride Booking:** Users can book rides and can manage their profiles. 
 + **Driver Management:** Drivers can manage their profiles, view ride requests, and accept or decline bookings.
 + **Role-based Access Control:** Securely manage different user roles **(admin, rider, driver)** ensuring a controlled and safe environment.
++ **Dynamic Fare Calculation:** Utilizes PostGIS for precise distance-based fare calculations, accounting for surge factors.
 + **Ride Fare:** Ride fare charges is calculated depending on distance and surge factor.
 + **Review System:** Empowering both restaurant owners and customers to provide and view ratings and feedback.
 
